@@ -10,7 +10,7 @@ interface Props {
 
 function SwitchTabs({ active, onChange }: Props) {
   return (
-    <div className="border border-gray-400 p-1 w-[400px] h-[75px] rounded-3xl flex relative">
+    <div className="border border-gray-400 p-1 w-[400px] h-[60px] rounded-3xl flex relative">
       {["login", "register"].map((tab) => (
         <div
           key={tab}
@@ -20,7 +20,7 @@ function SwitchTabs({ active, onChange }: Props) {
           {active === tab && (
             <motion.div
               layoutId="tabBg"
-              className="absolute inset-0 rounded-3xl bg-linear-to-r from-[#01D2B3] to-[#69F6E1]"
+              className="absolute inset-0 rounded-3xl bg-linear-to-r from-[#01D2B3] to-[#69F6E1] shadow-lg/20"
               transition={{ type: "spring", stiffness: 100, damping: 18 }}
               initial={false}
               animate={{
