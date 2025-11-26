@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ReactNode, use } from "react";
+import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface SideBarItemProps {
@@ -24,7 +24,7 @@ const SideBarItems = ({ label, icon, href, active }: SideBarItemProps) => {
         ${
           active
             ? "bg-linear-to-r from-[#00D2B2] to-[#7cfce9] text-white shadow-md justify-center h-14"
-            : "text-gray-600 hover:bg-[#eafffc] hover:shadow-sm"
+            : "text-[#655E5E] hover:bg-[#eafffc] hover:shadow-sm"
         }
       `}
     >
