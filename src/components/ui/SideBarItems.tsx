@@ -7,15 +7,12 @@ import { ReactNode } from "react";
 interface SideBarItemProps {
   label: string;
   icon?: ReactNode;
-  href?: string;
+  href: string;
   active?: boolean;
 
   toggle?: boolean;
   isOpen?: boolean;
-  forcedInactive?: boolean;
-
-  onToggle?: () => void;       // klik icon panah
-  onClickMain?: () => void;    // klik area utama
+  onToggle?: () => void; // klik icon panah
 }
 
 const MotionLink = motion(Link);
@@ -27,17 +24,15 @@ export function SideBarItems({
   active,
   toggle,
   isOpen,
-  forcedInactive,
   onToggle,
-  onClickMain,
 }: SideBarItemProps) {
-  const isActiveNow = toggle ? active : !forcedInactive && active;
+  const isActiveNow = active;
 
   const baseClass = `
-    flex items-center justify-between gap-3 p-4 rounded-3xl cursor-pointer transition font-medium 
+    flex items-center justify-between p-2 rounded-xl cursor-pointer transition font-normal 
     ${
       isActiveNow
-        ? "bg-linear-to-r from-[#00D2B2] to-[#7cfce9] text-white shadow-md"
+        ? "bg-linear-to-r from-[#00D2B2] to-[#7cfce9] text-white justify-center my-3 py-4 shadow-md"
         : "text-[#655E5E] hover:bg-[#eafffc] hover:shadow-sm"
     }
   `;
@@ -45,11 +40,15 @@ export function SideBarItems({
   // ITEM DROPDOWN
   if (toggle) {
     return (
-      <div className={baseClass}>
-        <div
-          onClick={onClickMain}
-          className="flex items-center gap-3 flex-1 select-none"
-        >
+      <MotionLink
+        animate={{
+          x: isActiveNow ? 10 : 0,
+        }}
+        transition={{ type: "keyframes", duration: 0.2 }}
+        href={href}
+        className={baseClass}
+      >
+        <div className="flex items-center gap-3 flex-1 select-none">
           {icon}
           <span>{label}</span>
         </div>
@@ -60,18 +59,25 @@ export function SideBarItems({
             onToggle?.();
           }}
           animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.5 }}
           className="p-1"
         >
           <Icon icon="mdi:chevron-up" width="20" height="20" />
         </motion.div>
-      </div>
+      </MotionLink>
     );
   }
 
   // NORMAL LINK ITEM
   return (
-    <MotionLink href={href || "#"} className={baseClass}>
+    <MotionLink
+      animate={{
+        x: isActiveNow ? 10 : 0,
+      }}
+      transition={{ type: "keyframes", duration: 0.2 }}
+      href={href || "#"}
+      className={baseClass}
+    >
       <div className="flex items-center gap-3">
         {icon}
         <span>{label}</span>

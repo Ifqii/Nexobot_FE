@@ -14,7 +14,7 @@ const Page = () => {
   };
 
   const handleClickFb = async () => {
-    const data = await fetch("https://chatbots3integration-backend-production.up.railway.app/api/bot/prompts", { credentials: "include" })
+    const data = await fetch("https://chatbots3integration-backend-production.up.railway.app/api/admin/prompt", { credentials: "include" })
 
     console.log(await data.json())
   }
@@ -31,7 +31,7 @@ const Page = () => {
           <SwitchTabs
             active="login"
             onChange={(tab) => {
-              router.push(`/auth/${tab}`);
+              router.push(`/${tab}`);
             }}
           />
 

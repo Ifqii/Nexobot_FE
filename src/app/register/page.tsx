@@ -20,7 +20,7 @@ const Page = () => {
           <SwitchTabs
             active="register"
             onChange={(tab) => {
-              router.push(`/auth/${tab}`);
+              router.push(`/${tab}`);
             }}
           />
 

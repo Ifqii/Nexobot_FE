@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div>
         ini Landing Page
-        <Button label="Get Started" variant="primary" moveTo='/auth/login'/>
+        <Button label="Get Started" variant="primary" moveTo='/login'/>
     </div>
   )
 }

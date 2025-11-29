@@ -1,5 +1,6 @@
 "use client";
 import { SideBarItems } from "./SideBarItems";
+import { SubSideBarItems } from "./subSideBarItems";
 import { Icon } from "@iconify/react";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -7,17 +8,17 @@ import { useState, useEffect } from "react";
 const botMenu = [
   {
     label: "Dashboard",
-    icon: <Icon icon="mage:dashboard-plus-fill" width="24" height="24" />,
+    icon: <Icon icon="mage:dashboard-plus-fill" width="16" height="16" />,
     href: "/dashboard",
   },
   {
     label: "Prompting",
-    icon: <Icon icon="mdi:chat-outline" width="24" height="24" />,
+    icon: <Icon icon="mingcute:edit-2-fill" width="16" height="16" />,
     href: "/prompting",
   },
   {
     label: "Bot Builder",
-    icon: <Icon icon="fluent:bot-add-32-filled" width="24" height="24" />,
+    icon: <Icon icon="tdesign:system-setting" width="16" height="16" />,
     href: "/bot-builder",
   },
   {
@@ -25,15 +26,15 @@ const botMenu = [
     icon: (
       <Icon
         icon="material-symbols:integration-instructions"
-        width="24"
-        height="24"
+        width="16"
+        height="16"
       />
     ),
     href: "/integration",
   },
   {
     label: "AI & Analytic",
-    icon: <Icon icon="ri:file-ai-fill" width="24" height="24" />,
+    icon: <Icon icon="ri:file-ai-fill" width="16" height="16" />,
     href: "/ai-analytic",
   },
 ];
@@ -41,7 +42,7 @@ const botMenu = [
 const salesMenu = [
   {
     label: "Product Manager",
-    icon: <Icon icon="ix:product" width="24" height="24" />,
+    icon: <Icon icon="ix:product" width="16" height="16" />,
     href: "/product-manager",
   },
   {
@@ -49,20 +50,20 @@ const salesMenu = [
     icon: (
       <Icon
         icon="material-symbols:payment-arrow-down-outline-rounded"
-        width="24"
-        height="24"
+        width="16"
+        height="16"
       />
     ),
     href: "/payment",
   },
   {
     label: "Sales Monitoring",
-    icon: <Icon icon="grommet-icons:shop" width="24" height="24" />,
+    icon: <Icon icon="grommet-icons:shop" width="16" height="16" />,
     href: "/sales-monitoring",
   },
   {
     label: "Customer",
-    icon: <Icon icon="famicons:people" width="24" height="24" />,
+    icon: <Icon icon="famicons:people" width="16" height="16" />,
     href: "/customer",
   },
 ];
@@ -70,20 +71,20 @@ const salesMenu = [
 const mainMenu = [
   {
     label: "Settings",
-    icon: <Icon icon="material-symbols:settings" width="24" height="24" />,
+    icon: <Icon icon="material-symbols:settings" width="16" height="16" />,
     href: "/settings",
   },
   {
     label: "Notification",
-    icon: <Icon icon="iconamoon:notification-fill" width="24" height="24" />,
+    icon: <Icon icon="iconamoon:notification-fill" width="16" height="16" />,
     href: "/notification",
   },
 ];
 
 const integrationSubMenu = [
-  { label: "Whatsapp", href: "/wa" },
-  { label: "Telegram", href: "/tele" },
-  { label: "Website", href: "/web" },
+  { labelSub: "Whatsapp", subHref: "/wa" },
+  { labelSub: "Telegram", subHref: "/tele" },
+  { labelSub: "Website", subHref: "/web" },
 ];
 
 // Page
@@ -92,19 +93,20 @@ const SideBar = () => {
   const [openIntegration, setOpenIntregation] = useState(false);
 
   useEffect(() => {
-    setOpenIntregation(activePath === "/Integration");
+    setOpenIntregation(activePath === "/integration");
   }, [activePath]);
 
   return (
-    <div className="h-screen w-64 p-4 overflow-y-scroll">
+    <div className="h-screen w-[276px] p-4 fixed bg-linear-to-t from-[#C4FAF2] to-20%">
       <div className="flex flex-col items-center text-[#01D2B3]">
         <Icon icon="garden:bot-sparkle-fill-12" width="50" height="50" />
         <h2 className="text-center mb-6 font-bold text-lg">NEXCHATBOT</h2>
       </div>
       <div>
-        <h3 className="font-bold text-[#655E5E]">Bot Menu</h3>
+        <h3 className="font-semibold ml-7 text-[#68626238]">BOT MENU</h3>
         {botMenu.map((item) => {
-          if (item.label === "Integration") {
+          if (item.href === "/integration") {
+
             return (
               <div key={item.href}>
                 <SideBarItems
@@ -113,17 +115,17 @@ const SideBar = () => {
                   icon={item.icon}
                   toggle
                   isOpen={openIntegration}
-                  active={activePath === "/Integration"}
+                  active={activePath === "/integration"}
                   onToggle={() => setOpenIntregation(!openIntegration)}
                 />
                 {openIntegration && (
-                  <div className="ml-8 flex flex-col">
+                  <div className="ml-8 flex flex-col gap-3.5">
                     {integrationSubMenu.map((sub) => (
-                      <SideBarItems
-                        key={sub.href}
-                        label={sub.label}
-                        href={sub.href}
-                        active={activePath === sub.href}
+                      <SubSideBarItems
+                        key={sub.subHref}
+                        labelSub={sub.labelSub}
+                        subHref={sub.subHref}
+                        active={activePath === sub.subHref}
                       />
                     ))}
                   </div>
@@ -138,12 +140,14 @@ const SideBar = () => {
               href={item.href}
               icon={item.icon}
               active={activePath === item.href}
+             
             />
           );
         })}
       </div>
+      {/* Sales Menu */}
       <div>
-        <h3 className="font-bold text-[#655E5E]">Sales Menu</h3>
+        <h3 className="font-semibold ml-7 text-[#68626238]">SALES MENU</h3>
         {salesMenu.map((item) => (
           <SideBarItems
             key={item.href}
@@ -154,8 +158,9 @@ const SideBar = () => {
           />
         ))}
       </div>
+      {/* Main Menu */}
       <div>
-        <h3 className="font-bold text-[#655E5E]">Main Menu</h3>
+        <h3 className="font-semibold ml-7 text-[#68626238]">MAIN MENU</h3>
         {mainMenu.map((item) => (
           <SideBarItems
             key={item.href}
