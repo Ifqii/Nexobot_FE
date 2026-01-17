@@ -97,7 +97,7 @@ const SideBar = () => {
   }, [activePath]);
 
   return (
-    <div className="h-screen w-[276px] p-4 fixed bg-linear-to-t from-[#C4FAF2] to-20%">
+    <div className="h-screen w-69 p-4 fixed bg-linear-to-t from-[#C4FAF2] to-20%">
       <div className="flex flex-col items-center text-[#01D2B3]">
         <Icon icon="garden:bot-sparkle-fill-12" width="50" height="50" />
         <h2 className="text-center mb-6 font-bold text-lg">NEXCHATBOT</h2>

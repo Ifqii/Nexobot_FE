@@ -18,7 +18,7 @@ const AgentList = () => {
             <option className="p-1 bg-gray-100 rounded-lg">
               Claude
             </option>
-            <Button label="Test" variant="custom" className="px-11 py-1 bg-[#A4F5A6] rounded-lg"/>
+            <Button moveTo='/agent/test-agent' label="Test" variant="custom" className="px-11 py-1 bg-[#A4F5A6] rounded-lg"/>
           </div>
         </Cards>
       </div>

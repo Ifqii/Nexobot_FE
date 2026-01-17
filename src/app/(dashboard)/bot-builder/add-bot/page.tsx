@@ -1,8 +1,8 @@
 import React from 'react'
-import { BotList } from './components/BotList'
+import { AddBot } from '../components/AddBot'
 
 const page = () => {
-  return <BotList />
+  return <AddBot />
 }
 
 export default page

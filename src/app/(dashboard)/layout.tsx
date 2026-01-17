@@ -9,16 +9,18 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex grow">
-      <div className="w-[285px] h-auto">
+      <div className="w-71.25 h-auto">
         <SideBar />
       </div>
       <div className="flex-1 p-6">
         <div className="flex justify-between items-center rounded-xl shadow-xl/20 px-3">
           <div className="flex items-center ">
             <Icon icon="material-symbols:search" width={26} height={26} />
-            <SearchBar />
+            <SearchBar variant="default"/>
           </div>
-          icon
+          <div className="profile mr-4 rounded-full bg-gray-300 w-12 h-12 flex justify-center items-center text-xl font-bold text-white">
+            J
+          </div>
         </div>
         
         <div className="mt-9">{children}</div>
