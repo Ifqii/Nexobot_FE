@@ -11,6 +11,7 @@ interface ButtonProps {
   icon?: ReactNode;
   iconPosition?: "left" | "right"
   className?: string;
+  onClick?: () => void;
 }
 
 const Button = ({
@@ -20,6 +21,7 @@ const Button = ({
   fullWidth,
   icon,
   iconPosition,
+  onClick,
   className
 }: ButtonProps) => {
   const router = useRouter();
@@ -35,6 +37,7 @@ const Button = ({
   };
 
   const handleMoveTo = () => {
+    if (onClick) return onClick();
     if (moveTo) router.push(moveTo);
   };
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Input } from "@/src/components/ui/Input";
 import { SearchBar } from "@/src/components/ui/SearchBar";
 import { Checkbox } from "@/src/components/ui/Checkbox";
+import { Button } from "@/src/components/ui/Button";
 
 const AddAgent = () => {
   const [aiModel, setAiModel] = useState("");
@@ -53,9 +54,9 @@ const AddAgent = () => {
 
         </div>
         {/* Upload File */}
-        <div className="upload-file-agent">
+        <div className="upload-file-agent flex flex-col">
             <h1 className="mb-2">Upload File</h1>
-          <Input type="file" variant="secondary" placeholder="" className="p-10" />
+          <Input type="file" variant="secondary" placeholder="" className="h-full" />
         </div>
       </div>
 
@@ -99,9 +100,9 @@ const AddAgent = () => {
             3 Produk terpilih
           </div>
           <div className="flex gap-6">
-            <p>Batalkan semua</p>
-            <p>Hapus</p>
-            <p>Buat</p>
+            <Button variant="custom" label="Batalkan semua" />
+            <Button variant="custom" label="Hapus" />
+            <Button variant="custom" label="Buat" />
           </div>
         </div>
     </div>

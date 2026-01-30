@@ -1,0 +1,26 @@
+"use client";
+
+import BaseModal from "./BaseModal";
+import { Input } from "@/src/components/ui/Input";
+import { Button } from "@/src/components/ui/Button";
+
+interface AddBotFatherModalProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+export function AddBotFatherModal({ open, onClose }: AddBotFatherModalProps) {
+  return (
+    <BaseModal open={open} onClose={onClose} title="Tambahkan Bot Father">
+      <div className="space-y-4">
+        <Input placeholder="Nama Bot" variant="secondary" />
+        <Input placeholder="Masukkan Token Bot" variant="secondary" />
+
+        <div className="flex justify-end gap-2 mt-6">
+          <Button variant="custom" className="p-1.5 w-28 rounded-lg bg-gray-300 text-sm" label="Kembali" onClick={onClose} />
+          <Button variant="custom" className="p-1.5 w-28 rounded-lg bg-emerald-300 text-sm" label="Simpan" />
+        </div>
+      </div>
+    </BaseModal>
+  );
+}

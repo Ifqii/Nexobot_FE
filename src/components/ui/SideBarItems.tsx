@@ -29,11 +29,11 @@ export function SideBarItems({
   const isActiveNow = active;
 
   const baseClass = `
-    flex items-center justify-between p-2 rounded-xl cursor-pointer transition font-normal 
+    flex items-center justify-between my-6 rounded-lg cursor-pointer transition font-normal 
     ${
       isActiveNow
-        ? "bg-linear-to-r from-[#00D2B2] to-[#7cfce9] text-white justify-center my-3 py-4 shadow-md"
-        : "text-[#655E5E] hover:bg-[#eafffc] hover:shadow-sm"
+        ? "bg-linear-to-r from-[#00D2B2] to-[#7cfce9] text-white justify-center py-4 shadow-md"
+        : "text-[#655E5E] hover:border-b rounded-none"
     }
   `;
 
@@ -41,9 +41,6 @@ export function SideBarItems({
   if (toggle) {
     return (
       <MotionLink
-        animate={{
-          x: isActiveNow ? 10 : 0,
-        }}
         transition={{ type: "keyframes", stiffness: 200, duration: 0.2 }}
         href={href}
         className={baseClass}
@@ -71,9 +68,6 @@ export function SideBarItems({
   // NORMAL LINK ITEM
   return (
     <MotionLink
-      animate={{
-        x: isActiveNow ? 10 : 0,
-      }}
       transition={{ type: "keyframes", duration: 0.2 }}
       href={href || "#"}
       className={baseClass}

@@ -10,8 +10,8 @@ interface SearchBarProps {
 
 const SearchBar = ({ placeholder, className, variant = "primary" }: SearchBarProps) => {
   return (
-    <div>
-        <Input placeholder={placeholder || "Search..."} variant={variant} className={className} />
+    <div className={className}>
+        <Input placeholder={placeholder || "Search..."} variant={variant} />
     </div>
   )
 }

@@ -4,20 +4,9 @@ import { Input } from "@/src/components/ui/Input";
 import { useRouter } from "next/navigation";
 import { SwitchTabs } from "@/src/components/SwitchTabs";
 import { Icon } from "@iconify/react";
-import { GoogleOauth } from "@/src/services/api-auth/route";
 
 const Page = () => {
   const router = useRouter();
-
-  const handleClick = async () => {
-    await GoogleOauth();
-  };
-
-  // const handleClickFb = async () => {
-  //   const data = await fetch("https://chatbots3integration-backend-production.up.railway.app/api/admin/prompt", { credentials: "include" })
-
-  //   console.log(await data.json())
-  // }
 
   return (
     <div className="flex w-full h-full items-center overflow-hidden">
@@ -37,25 +26,35 @@ const Page = () => {
 
           {/* form */}
           <form action="">
-            <div className="w-[400px] h-auto flex flex-col justify-center items-center gap-2 p-5 bg-[#F4FFFD] border rounded-2xl border-gray-400 text-[#575555]">
+            <div className="w-100 h-auto flex flex-col justify-center items-center gap-2 p-5 bg-[#F4FFFD] border rounded-xl border-[#DBD5D5] text-[#575555]">
               <div className="w-full">
                 <p className="text-xs place-self-start ml-2 mb-1.5">
                   Email address
                 </p>
-                <Input
-                  prefix="test"
-                  placeholder="Masukan email"
-                  type="email"
-                  variant="primary"
-                />
+                <div className="flex focus-within:border-[#01D2B3] border border-[#575555] rounded-xl items-center">
+                  <Icon icon="mdi:email" width={30} className="ml-7 text-[#575555]"/>
+                  <div className="h-10 w-px bg-gray-500 mx-7 mr-4"></div>
+                  <Input
+                    placeholder="Masukan email"
+                    type="email"
+                    variant="custom"
+                    className="focus:outline-none text-[#575555]"
+                  />
+                </div>
               </div>
               <div className="w-full">
                 <p className="text-xs place-self-start ml-2 mb-1.5">Password</p>
+                <div className="flex focus-within:border-[#01D2B3] border border-[#575555] rounded-xl items-center">
+                  <Icon icon="carbon:password" width={30} className=" ml-7 text-[#575555]"/>
+                  <div className="h-10 w-px bg-gray-500 ml-7 mr-4"></div>
                 <Input
                   placeholder="Masukan password"
                   type="password"
-                  variant="primary"
+                  variant="custom"
+                  className="focus:outline-none text-[#575555]"
                 />
+                <Icon icon="mdi:eye" width={30} className="mr-5 text-[#575555] cursor-pointer"/>
+                </div>
               </div>
             </div>
             <div className="mt-5">
@@ -65,14 +64,15 @@ const Page = () => {
 
           {/* Another Login */}
           <div className="flex flex-col items-center gap-3">
-            <p className="text-xs font-medium text-gray-500">
+            <p className="flex items-center gap-2 text-xs font-medium text-black">
+              <span className="w-34 h-px bg-black"></span>
               or continue with
+              <span className="w-34 h-px bg-black"></span>
             </p>
 
             <div className="flex gap-5">
               <div className="w-10 h-10 border border-gray-300 rounded-full flex justify-center items-center cursor-pointer">
                 <Icon
-                  onClick={handleClick}
                   icon="material-icon-theme:google"
                   width="20"
                   height="20"
@@ -88,7 +88,11 @@ const Page = () => {
         </div>
       </div>
       {/* right side */}
-      <div className="w-1/2 h-screen bg-[#01D2B3]"></div>
+      <div className="w-1/2 h-screen bg-[#01D2B3] p-5">
+          <div className="foto w-full h-full bg-white">
+
+          </div>
+      </div>
     </div>
   );
 };

@@ -4,9 +4,21 @@ import { Input } from "@/src/components/ui/Input";
 import { useRouter } from "next/navigation";
 import { SwitchTabs } from "@/src/components/SwitchTabs";
 import { Icon } from "@iconify/react";
+import { useState } from "react";
+import { RegisterProps } from "@/src/model/authentication.model";
+import { Register } from "@/src/services/api-auth/authentication.route";
 
 const Page = () => {
   const router = useRouter();
+  const [register, setRegister] = useState<RegisterProps>({ firstName: '', lastName: '', email: '', password: '' });
+
+  const handleOnSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = await Register(register);
+    if(data){
+      console.log("Register successful", data);
+    }
+  }
 
   return (
     <div className="flex w-full h-screen items-center overflow-hidden">
@@ -25,8 +37,8 @@ const Page = () => {
           />
 
           {/* form */}
-          <form action="">
-            <div className="w-[400px] h-auto flex flex-col justify-center items-center gap-2 p-4 bg-[#F4FFFD] border rounded-3xl border-gray-400 text-[#575555]">
+          <form action="" onSubmit={handleOnSubmit}>
+            <div className="w-100 h-auto flex flex-col justify-center items-center gap-2 p-4 bg-[#F4FFFD] border rounded-xl border-[#DBD5D5] text-[#575555]">
               <div>
                 <p className="text-xs ml-2 mb-1.5">
                   Masukan nama anda
@@ -35,12 +47,16 @@ const Page = () => {
                   <Input
                     placeholder="First Name"
                     type="text"
-                    variant="primary"
+                    variant="secondary"
+                    onChange={(e) => setRegister({...register, firstName: e.target.value})}
+                    required
                   />
                   <Input
                     placeholder="Last Name"
                     type="text"
-                    variant="primary"
+                    variant="secondary"
+                    onChange={(e) => setRegister({...register, lastName: e.target.value})}
+                    required
                   />
                 </div>
               </div>
@@ -51,7 +67,9 @@ const Page = () => {
                 <Input
                   placeholder="Email address"
                   type="email"
-                  variant="primary"
+                  variant="secondary"
+                  onChange={(e) => setRegister({...register, email: e.target.value})}
+                  required
                 />
               </div>
               <div className="w-full">
@@ -61,7 +79,9 @@ const Page = () => {
                 <Input
                   placeholder="Password"
                   type="password"
-                  variant="primary"
+                  variant="secondary"
+                  onChange={(e) => setRegister({...register, password: e.target.value})}
+                  required
                 />
               </div>
               <div className="w-full">
@@ -71,7 +91,7 @@ const Page = () => {
                 <Input
                   placeholder="Confirm Password"
                   type="password"
-                  variant="primary"
+                  variant="secondary"
                 />
               </div>
             </div>
@@ -82,8 +102,10 @@ const Page = () => {
           </form>
           {/* Another Login */}
           <div className="flex flex-col items-center gap-3">
-            <p className="text-xs font-medium text-gray-500">
+            <p className="flex items-center gap-2 text-xs font-medium text-black">
+              <span className="w-34 h-px bg-black"></span>
               or continue with
+              <span className="w-34 h-px bg-black"></span>
             </p>
 
             <div className="flex gap-5">

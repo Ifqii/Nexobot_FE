@@ -8,17 +8,17 @@ interface Props {
 
 function SwitchTabs({ active, onChange }: Props) {
   return (
-    <div className="border border-gray-400 p-1 w-[400px] h-[60px] rounded-2xl flex relative">
+    <div className="border border-[#DBD5D5] p-2.5 w-100 rounded-[14px] flex relative">
       {["login", "register"].map((tab) => (
         <div
           key={tab}
-          className="w-1/2 flex justify-center items-center relative cursor-pointer"
+          className="w-1/2 flex justify-center items-center relative cursor-pointer p-3"
           onClick={() => onChange(tab as "login" | "register")}
         >
           {active === tab && (
             <motion.div
               layoutId="tabBg"
-              className="absolute inset-0 rounded-2xl bg-linear-to-r from-[#01D2B3] to-[#69F6E1] shadow-lg/20"
+              className="absolute p-3.5 inset-0 rounded-[10px] bg-linear-to-r from-[#01D2B3] to-[#6cf9e4] drop-shadow-[0_10px_10px_rgba(0,255,213,0.5)] shadow-[0_5px_5px_rgba(0,0,0,0.25)]"
               transition={{ type: "spring", stiffness: 100, damping: 18 }}
               initial={false}
               animate={{
