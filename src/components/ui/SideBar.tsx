@@ -93,16 +93,16 @@ const SideBar = () => {
   }, [activePath]);
 
   return (
-    <div className="h-screen w-69 fixed bg-linear-to-b from-[#FFFFFF] to-[#F6F6F6] overflow-y-auto scrollbar-hide">
-      <div className="m-5">
-        <div className="sticky flex flex-col items-center text-[#01D2B3] mb-7">
-          <Icon icon="garden:bot-sparkle-fill-12" width="50" height="50" />
-          <h2 className="text-center mt-2.5 font-normal text-2xl">
-            NEXCHATBOT
+    <div className="fixed flex flex-col h-screen w-69 bg-linear-to-b from-[#FFFFFF] to-[#F6F6F6]">
+        <div className="ml-9 flex items-center gap-4 text-[#01D2B3] m-5">
+          <Icon icon="mingcute:robot-fill" width="30" height="30" />
+          <h2 className="font-semibold text-2xl">
+            Nexchatbot
           </h2>
         </div>
+      <div className="grow px-5 overflow-y-auto scrollbar-hide">
         <div>
-          <h3 className="font-semibold ml-7.5 text-[#6862624D]">MAIN MENU</h3>
+          <h3 className="font-semibold ml-4 text-[#6862624D]">Main Menu</h3>
           {mainMenu.map((item) => (
             <SideBarItems
               key={item.href}
@@ -115,7 +115,7 @@ const SideBar = () => {
         </div>
         {/* Sales Menu */}
         <div>
-          <h3 className="font-semibold ml-7 text-[#68626238]">BOT MENU</h3>
+          <h3 className="font-semibold ml-4 text-[#6862624D]">Bot Menu</h3>
           {botMenu.map((item) => {
             if (item.href === "/integration") {
               return (
@@ -157,7 +157,7 @@ const SideBar = () => {
         </div>
         {/* Main Menu */}
         <div>
-          <h3 className="font-semibold ml-7 text-[#68626238]">SALES MENU</h3>
+          <h3 className="font-semibold ml-4 text-[#6862624D]">Sales Menu</h3>
           {salesMenu.map((item) => (
             <SideBarItems
               key={item.href}
@@ -170,8 +170,8 @@ const SideBar = () => {
         </div>
       </div>
 
-      <div className="relative bottom-0 left-0 flex justify-between items-center h-20 mt-20 border-t-2 px-3.75">
-        <div className="flex items-center w-full gap-3.75">
+      <div className="sticky bottom-0 left-0 w-full flex justify-between items-center h-20 border-t-2 px-3.75 bg-white">
+        <div className="flex justify-center items-center w-full gap-3.75">
           <span className="Profile rounded-full bg-black w-10 h-10 flex justify-center items-center">
             <Icon
               icon="mdi:account-circle"
